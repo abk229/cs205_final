@@ -1,10 +1,15 @@
 # TODO: Modify this file to create a shell script that is able to use awk to go through a file formatted like pokemon.dat and provides a printed report in the following format (where your script correctly calculates the values that go into the [VALUE] placeholders):
 # ===== SUMMARY OF DATA FILE =====
-#    File name: [VALUE]
-#    Total Pokemon: [VALUE]
-#    Avg. HP: [VALUE]
+#    File name: $1
+#    Total Pokemon: $(awk 'END {print NR}' $filename)
+#    Avg. HP: $(awk '{sum += $4} END {print sum / NR}' $filename}
 #    Avg. Attack: [VALUE]
 # ===== END SUMMARY =====
+echo "==== SUMMARY OF $filename ====="
+echo "# Avg. HP: $avg_hp"
+echo "# Avg. Attack: $avg_attack"
+echo "# ==== END SUMMARY ==== #"
+
 
 # The "Avg." values should be calculated as mean values for the corresponding columns.
 # The spacing and header formatting should match the above formatting description exactly.
